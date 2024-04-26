@@ -56,6 +56,28 @@ Description  : The MySQL(TM) software delivers a very fast, multi-threaded, mult
 6. Install mysql 5.7 
 ```bash
 $ sudo yum install mysql-community-server
+[ec2-user@ip-172-xx-xx-xx ~]$  sudo yum install mysql-community-server
+Last metadata expiration check: 0:06:02 ago on Fri Apr 26 17:49:27 2024.
+Dependencies resolved.
+============================================================================================================================================================================================================
+ Package                                              Architecture                         Version                                                    Repository                                       Size
+============================================================================================================================================================================================================
+Installing:
+ mysql-community-server                               x86_64                               5.7.44-1.el7                                               mysql57-community                               184 M
+Installing dependencies:
+ libxcrypt-compat                                     x86_64                               4.4.33-7.amzn2023                                          amazonlinux                                      92 k
+ mysql-community-client                               x86_64                               5.7.44-1.el7                                               mysql57-community                                31 M
+ mysql-community-common                               x86_64                               5.7.44-1.el7                                               mysql57-community                               313 k
+ mysql-community-libs                                 x86_64                               5.7.44-1.el7                                               mysql57-community                               3.0 M
+ ncurses-compat-libs                                  x86_64                               6.2-4.20200222.amzn2023.0.6                                amazonlinux                                     323 k
+
+Transaction Summary
+============================================================================================================================================================================================================
+Install  6 Packages
+
+Total download size: 219 M
+Installed size: 931 M
+Is this ok [y/N]: y
 ```
 7. Enable service mysql 5.7  and start it. 
 ```bash
