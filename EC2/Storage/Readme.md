@@ -5,6 +5,7 @@ How to make EBS volume aviable for use
 Linux Version
 3. Check disk already to attach with command lsbk
  example output :
+ ```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ lsblk
 NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   20G  0 disk
@@ -13,8 +14,9 @@ nvme0n1       259:0    0   20G  0 disk
 └─nvme0n1p128 259:3    0   10M  0 part /boot/efi
 nvme1n1       259:4    0  200G  0 disk
 [ec2-user@ip-172-xx-xx-xx ~]$
+```
 4. Formated volume with system need example xfs 
-
+```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo mkfs -t xfs /dev/nvme1n1
 meta-data=/dev/nvme1n1           isize=512    agcount=16, agsize=3276800 blks
          =                       sectsz=512   attr=2, projid32bit=1
@@ -27,14 +29,15 @@ log      =internal log           bsize=4096   blocks=25600, version=2
          =                       sectsz=512   sunit=1 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 [ec2-user@ip-172-xx-xx-xx ~]$
-
+```
 5. Check volume was correct format :
-
+```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo file -s /dev/nvme1n1
 /dev/nvme1n1: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
 [ec2-user@ip-172-xx-xx-x ~]$
-
+```
 6. Mounting volume to folder .
+```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo mkdir /mnt/datamysql
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo chmod 777 /mnt/datamysql
 [ec2-user@ip-172-xx-xx-xx ~]$ 
@@ -71,10 +74,11 @@ sunrpc               0     0     0    - /var/lib/nfs/rpc_pipefs
 tmpfs             191M     0  191M   0% /run/user/1001
 /dev/nvme1n1      200G  1.5G  199G   1% /mnt/datamysql
 [ec2-user@ip-172-xx-xx-xx ~]$ df -ah
-
+```
 7. Automatically mount an attached volume after reboot
    Update file /etc/fstab 
    example : 
+```bash   
 [ec2-user@ip-172-xx-xx-x ~]$ cat /etc/fstab
 #
 UUID=900ed65c-6095-4ce3-8f14-60e443583ebd     /           xfs    defaults,noatime  1   1
@@ -129,9 +133,10 @@ tmpfs             191M     0  191M   0% /run/user/1001
 /dev/nvme1n1      200G  1.5G  199G   1% /mnt/datamysql
 binfmt_misc          0     0     0    - /proc/sys/fs/binfmt_misc
 [ec2-user@ip-172-xx-xx-xx ~]$
-
+```
 Test unmount and remount 
 - umount 
+```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo umount -a
 umount: /run/user/1001: target is busy.
 umount: /: target is busy.
@@ -151,9 +156,9 @@ selinuxfs          0     0     0    - /sys/fs/selinux
 sunrpc             0     0     0    - /var/lib/nfs/rpc_pipefs
 tmpfs           191M     0  191M   0% /run/user/1001
 [ec2-user@ip-172-xx-xx-xx ~]$
-
+```
 Remount volume :
-
+```bash
 [ec2-user@ip-172-xx-xx-xx ~]$ sudo mount -a
 [ec2-user@ip-172-xx-xx-xx ~]$ df -ah
 Filesystem        Size  Used Avail Use% Mounted on
@@ -170,5 +175,5 @@ tmpfs             191M     0  191M   0% /run/user/1001
 /dev/nvme0n1p128   10M  1.3M  8.7M  13% /boot/efi
 /dev/nvme1n1      200G  1.5G  199G   1% /mnt/datamysql
 [ec2-user@ip-172-xx-xx-xx ~]$
-
+```
 8. Restart
