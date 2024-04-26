@@ -54,6 +54,7 @@ Description  : The MySQL(TM) software delivers a very fast, multi-threaded, mult
 [ec2-user@ip-172-xx-xx-x ~]$
 ```
 6. Install mysql 5.7 
+
 ```bash
 $ sudo yum install mysql-community-server
 [ec2-user@ip-172-xx-xx-xx ~]$  sudo yum install mysql-community-server
@@ -79,6 +80,7 @@ Total download size: 219 M
 Installed size: 931 M
 Is this ok [y/N]: y
 ```
+
 7. Enable service mysql 5.7  and start it. 
 ```bash
 $ sudo systemctl enable mysqld 
