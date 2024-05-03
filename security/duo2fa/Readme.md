@@ -16,11 +16,15 @@ $ yum install duo_unix
 ```
 
 ## 3. edit file /etc/duo/pam_duo.conf
+
    Update base on data in duo dashboard
+
+```bash
    ikey = xxx
    skey = xxx
    host = xxx
    pushinfo = yes
+```
 
  ## 4. Since we will be using pam auth in ssh we need update some file
     a.Edit /etc/ssh/ssh_config.d/50-redhat.conf
