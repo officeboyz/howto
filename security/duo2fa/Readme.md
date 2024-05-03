@@ -77,5 +77,5 @@ $ yum install duo_unix
             auth       required       pam_deny.so
             auth       include        postlogin
             ```
-    ### c. Restart sshd service and test it 
+##    5. Restart sshd service and test it 
             
