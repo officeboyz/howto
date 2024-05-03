@@ -40,11 +40,11 @@ $ yum install duo_unix
               
          - before:   
 
-            ```bash 
+        ```bash
             auth        required      pam_env.so
             auth        sufficient    pam_unix.so try_first_pass nullok
             auth        required      pam_deny.so
-            ```
+        ```
 
         - after 
 
