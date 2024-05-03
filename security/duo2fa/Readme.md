@@ -80,4 +80,7 @@ $ yum install duo_unix
             auth       include        postlogin
 ```
 ##    5. Restart sshd service and test it 
+
+After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
+
             
