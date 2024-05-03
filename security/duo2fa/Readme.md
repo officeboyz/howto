@@ -1,6 +1,6 @@
 Deploy Duo 2FA in Redhat 9.3 
 
-##1. update repo to  official 
+## 1. update repo to  official 
 sudo vi /etc/yum.repos.d/duosecurity.repo 
 ```bash
 [duosecurity]
@@ -9,22 +9,22 @@ baseurl=https://pkg.duosecurity.com/RedHat/$releasever/$basearch
 enabled=1
 gpgcheck=1
 ```
-##2. update repo 
+## 2. update repo 
 ```bash
 $ rpm --import https://duo.com/DUO-GPG-PUBLIC-KEY.asc
 $ yum install duo_unix
 ```
 
-##3. edit file /etc/duo/pam_duo.conf
+## 3. edit file /etc/duo/pam_duo.conf
    Update base on data in duo dashboard
    ikey = xxx
    skey = xxx
    host = xxx
    pushinfo = yes
 
- ##4. Since we will be using pam auth in ssh we need update some file : 
+ ## 4. Since we will be using pam auth in ssh we need update some file : 
     
-    ###a. edit /etc/ssh/ssh_config.d/50-redhat.conf
+    ### a. edit /etc/ssh/ssh_config.d/50-redhat.conf
 
         ```bash   
 
@@ -36,7 +36,7 @@ $ yum install duo_unix
         AuthenticationMethods publickey,keyboard-interactive
         ```
 
-    ###b. edit pam configuration
+    ### b. edit pam configuration
        
        1. /etc/pam.d/system-auth ```
               
@@ -77,5 +77,5 @@ $ yum install duo_unix
             auth       required       pam_deny.so
             auth       include        postlogin
             ```
-    ###c. Restart sshd service and test it 
+    ### c. Restart sshd service and test it 
             
