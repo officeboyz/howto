@@ -25,6 +25,7 @@ $ yum install duo_unix
  4. Since we will be using pam auth in ssh we need update some file : 
     
     a. edit /etc/ssh/ssh_config.d/50-redhat.conf
+
      ```bash   
         ChallengeResponseAuthentication yes
         UsePAM yes
@@ -37,20 +38,22 @@ $ yum install duo_unix
        
        1. /etc/pam.d/system-auth
               
-         - before: 
-         ```bash 
+         - before:   
+
+            ```bash 
             auth        required      pam_env.so
             auth        sufficient    pam_unix.so try_first_pass nullok
             auth        required      pam_deny.so
-         ```
+            ```
         - after 
-          ```bash
+         
+            ```bash
             auth        required        pam_env.so
             #auth       sufficient      pam_unix.so try_first_pass nullok
             auth        requisite       pam_unix.so try_first_pass nullok
             auth        sufficient      pam_duo.so
             auth        required        pam_deny.so 
-          ```         
+            ```         
        2. SSH Public Key Authentication
            /etc/pam.d/sshd
          
