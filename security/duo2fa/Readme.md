@@ -35,10 +35,10 @@ $ yum install duo_unix
         PasswordAuthentication no
         AuthenticationMethods publickey,keyboard-interactive
         ```
-          
+
     b. edit pam configuration
        
-       1. /etc/pam.d/system-auth
+       1. ```bash /etc/pam.d/system-auth ```
               
          - before:   
 
