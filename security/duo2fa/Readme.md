@@ -23,10 +23,9 @@ $ yum install duo_unix
    pushinfo = yes
 
  ## 4. Since we will be using pam auth in ssh we need update some file
-    ### a.Edit /etc/ssh/ssh_config.d/50-redhat.conf
+    a.Edit /etc/ssh/ssh_config.d/50-redhat.conf
 
         ```bash   
-
         ChallengeResponseAuthentication yes
         UsePAM yes
         UseDNS no
@@ -35,9 +34,9 @@ $ yum install duo_unix
         AuthenticationMethods publickey,keyboard-interactive
         ```
 
-    ### b.edit pam configuration
+    b.edit pam configuration
        
-       1. /etc/pam.d/system-auth 
+      1. /etc/pam.d/system-auth 
               
          - before:   
 
