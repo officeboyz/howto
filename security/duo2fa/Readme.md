@@ -302,3 +302,35 @@ Create an account or view all your systems at https://red.ht/insights-dashboard
 Last login: Sat May  4 13:44:00 2024 from xxx.xxx.xx.xx
 [xxxx@localhost ~]$
 ```
+###    11. example ssh screen when duo configure correctly : 
+
+```bash 
+ ✘ xxx@Apples-MacBook-Pro  ~  ssh xxxx@xxxxx
+(xxxx@xx.xxx.xxx.xx) Duo two-factor login for xxxx
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to +XX XXX-XXXX-80xx
+ 2. Duo Push to +XX XXX-XXXX-80xx
+ 3. SMS passcodes to +XX XXX-XXXX-80xx (next code starts with: 1)
+ 4. SMS passcodes to +XX XXX-XXXX-80xx
+
+Passcode or option (1-4): 1
+Success. Logging you in...
+Last login: Sun Apr  7 17:32:57 2024 from 103.81.220.14
+   ,     #_
+   ~\_  ####_        Amazon Linux 2
+  ~~  \_#####\
+  ~~     \###|       AL2 End of Life is 2025-06-30.
+  ~~       \#/ ___
+   ~~       V~' '->
+    ~~~         /    A newer version of Amazon Linux is available!
+      ~~._.   _/
+         _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+       _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+110 package(s) needed for security, out of 145 available
+Run "sudo yum update" to apply all updates.
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+[xxx@xxxxx ~]$
+```
