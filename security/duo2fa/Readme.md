@@ -83,4 +83,64 @@ $ yum install duo_unix
 
 After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
 
-            
+Install duo step by step using script : 
+```bash 
+
+[root@localhost ~]# git clone -b develop https://github.com/officeboyz/howto.git
+Cloning into 'howto'...
+remote: Enumerating objects: 158, done.
+remote: Counting objects: 100% (158/158), done.
+remote: Compressing objects: 100% (87/87), done.
+remote: Total 158 (delta 45), reused 135 (delta 22), pack-reused 0
+Receiving objects: 100% (158/158), 18.03 KiB | 879.00 KiB/s, done.
+Resolving deltas: 100% (45/45), done.
+[root@localhost ~]# cd howto/security/duo2fa/
+Readme.md  script/
+[root@localhost ~]# cd howto/security/duo2fa/script/
+[root@localhost script]#
+[root@localhost script]# ls -lhat
+total 4.0K
+drwxr-xr-x. 3 root root  37 May  4 13:37 .
+drwxr-xr-x. 3 root root  37 May  4 13:37 ..
+-rwxr-xr-x. 1 root root 565 May  4 13:37 deploy.sh
+drwxr-xr-x. 3 root root  17 May  4 13:37 script 
+[root@localhost script]# ./deploy.sh
+copy repo
+update pub key
+install duo app
+Duo Security Repository                                                                                                                                                     1.3 kB/s | 1.7 kB     00:01
+Dependencies resolved.
+============================================================================================================================================================================================================
+ Package                                         Architecture                                  Version                                             Repository                                          Size
+============================================================================================================================================================================================================
+Installing:
+ duo_unix                                        x86_64                                        2.0.3-0.el9                                         duosecurity                                        404 k
+
+Transaction Summary
+============================================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 404 k
+Installed size: 1.0 M
+Downloading Packages:
+duo_unix-2.0.3-0.el9.x86_64.rpm                                                                                                                                             226 kB/s | 404 kB     00:01
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                       225 kB/s | 404 kB     00:01
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                                                    1/1
+  Installing       : duo_unix-2.0.3-0.el9.x86_64                                                                                                                                                        1/1
+  Running scriptlet: duo_unix-2.0.3-0.el9.x86_64                                                                                                                                                        1/1
+  Verifying        : duo_unix-2.0.3-0.el9.x86_64                                                                                                                                                        1/1
+
+Installed:
+  duo_unix-2.0.3-0.el9.x86_64
+
+Complete!
+copy config
+[root@localhost script]#
+
+```
