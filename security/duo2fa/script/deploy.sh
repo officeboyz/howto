@@ -8,6 +8,9 @@ if [ `id -u` -ne 0 ]
 
      echo "update pub key"
      rpm --import https://duo.com/DUO-GPG-PUBLIC-KEY.asc
+     
+     echo "install lib openssl dev"
+     yum -y install openssl-devel pam-devel bzip2 
 
      echo "install duo app"
      yum  -y install duo_unix
