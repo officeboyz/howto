@@ -1,6 +1,6 @@
 Deploy Duo 2FA in Redhat 9.3 
 
-## 1. update repo to  official 
+### 1. update repo to  official 
 sudo vi /etc/yum.repos.d/duosecurity.repo 
 ```bash
 [duosecurity]
@@ -9,13 +9,13 @@ baseurl=https://pkg.duosecurity.com/RedHat/$releasever/$basearch
 enabled=1
 gpgcheck=1
 ```
-## 2. update repo 
+### 2. update repo 
 ```bash
 $ rpm --import https://duo.com/DUO-GPG-PUBLIC-KEY.asc
 $ yum install duo_unix
 ```
 
-## 3. edit file /etc/duo/pam_duo.conf
+### 3. edit file /etc/duo/pam_duo.conf
 
    Update base on data in duo dashboard
 
@@ -26,7 +26,7 @@ $ yum install duo_unix
    pushinfo = yes
 ```
 
- ## 4. Since we will be using pam auth in ssh we need update some file
+ ### 4. Since we will be using pam auth in ssh we need update some file
     a.Edit /etc/ssh/ssh_config.d/50-redhat.conf
 
 ```bash   
@@ -79,11 +79,11 @@ $ yum install duo_unix
             auth       required       pam_deny.so
             auth       include        postlogin
 ```
-##    5. Restart sshd service and test it 
+###    5. Restart sshd service and test it 
 
 After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
 
-##    6. Install using script on redhta enterprise 9.3 
+###    6. Install using script on redhta enterprise 9.3 
 
 Install duo step by step using script make sure using **user root**  : 
 ```bash 
@@ -107,7 +107,7 @@ drwxr-xr-x. 3 root root  37 May  4 13:37 ..
 -rwxr-xr-x. 1 root root 565 May  4 13:37 deploy.sh
 drwxr-xr-x. 3 root root  17 May  4 13:37 script 
 ```
-##     7.Edit file pam_duo.conf with data from duo dashboard 
+###     7.Edit file pam_duo.conf with data from duo dashboard 
 
 ```bash
 [root@localhost script]# cat script/etc/duo/pam_duo.conf
@@ -128,7 +128,7 @@ failmode = safe
 pushinfo = yes
 ```
 
-##     8.Running script deploy.sh  as ***root user***
+###     8.Running script deploy.sh  as ***root user***
 
 ```bash 
 [root@localhost script]# ./deploy.sh
@@ -273,7 +273,7 @@ session    include      postlogin
 [root@localhost script]#
 [root@localhost script]# sudo systemctl restart sshd
 ```
-##    9. Monitor log secure to make sure duo working ***(host/server must be can access internet )*** since need connect to duo push server api:
+###    9. Monitor log secure to make sure duo working ***(host/server must be can access internet )*** since need connect to duo push server api:
 ```bash
 [root@localhost script]# tail -f /var/log/secure
 May  4 13:25:44 localhost sudo[1654]: pam_unix(sudo:session): session opened for user root(uid=0) by utopia(uid=0)
@@ -292,7 +292,7 @@ May  4 13:44:00 localhost sshd[1949]: Accepted password for utopia from 192.168.
 May  4 13:44:00 localhost sshd[1949]: pam_unix(sshd:session): session opened for user utopia(uid=1000) by (uid=0)
 
 ```
-##     10. example ssh screen when dou not configure with valid data:
+###     10. example ssh screen when duo not configure with valid data/connection internet:
 
 ```bash 
 # ssh xxxx@xxx.xxx.xx.xx
