@@ -83,7 +83,7 @@ $ yum install duo_unix
 
 After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
 
-Install duo step by step using script : 
+Install duo step by step using script make sure using /b user root /b : 
 ```bash 
 
 [root@localhost ~]# git clone -b develop https://github.com/officeboyz/howto.git
@@ -244,5 +244,30 @@ session    optional     pam_motd.so
 session    include      password-auth
 session    include      postlogin
 [root@localhost script]#
+[root@localhost script]# sudo systemctl restart sshd
+[root@localhost script]# tail -f /var/log/secure
+May  4 13:25:44 localhost sudo[1654]: pam_unix(sudo:session): session opened for user root(uid=0) by utopia(uid=0)
+May  4 13:25:44 localhost sudo[1654]: pam_unix(sudo:session): session closed for user root
+May  4 13:43:33 localhost sudo[1942]: PAM unable to dlopen(/usr/lib64/security/pam_fprintd.so): /usr/lib64/security/pam_fprintd.so: cannot open shared object file: No such file or directory
+May  4 13:43:33 localhost sudo[1942]: PAM adding faulty module: /usr/lib64/security/pam_fprintd.so
+May  4 13:43:34 localhost sudo[1942]:    root : TTY=pts/0 ; PWD=/root/howto/security/duo2fa/script ; USER=root ; COMMAND=/bin/systemctl restart sshd
+May  4 13:43:34 localhost sudo[1942]: pam_unix(sudo:session): session opened for user root(uid=0) by utopia(uid=0)
+May  4 13:43:34 localhost sshd[846]: Received signal 15; terminating.
+May  4 13:43:34 localhost sshd[1947]: Server listening on 0.0.0.0 port 22.
+May  4 13:43:34 localhost sshd[1947]: Server listening on :: port 22.
+May  4 13:43:34 localhost sudo[1942]: pam_unix(sudo:session): session closed for user root
+May  4 13:43:59 localhost sshd[1949]: starting Duo Unix: PAM Duo
+May  4 13:43:59 localhost sshd[1949]: Failsafe Duo login for 'utopia' from 192.168.2.61: Invalid ikey or skey
+May  4 13:44:00 localhost sshd[1949]: Accepted password for utopia from 192.168.2.61 port 51919 ssh2
+May  4 13:44:00 localhost sshd[1949]: pam_unix(sshd:session): session opened for user utopia(uid=1000) by (uid=0)
 
+```
+
+```bash 
+# ssh xxxx@xxx.xxx.xx.xx
+xxxx@xxx.xxx.xx.xx's password:
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+Last login: Sat May  4 13:44:00 2024 from xxx.xxx.xx.xx
+[xxxx@localhost ~]$
 ```
