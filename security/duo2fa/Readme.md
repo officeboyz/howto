@@ -317,7 +317,7 @@ Enter a passcode or select one of the following options:
 
 Passcode or option (1-4): 1
 Success. Logging you in...
-Last login: Sun Apr  7 17:32:57 2024 from 103.81.220.14
+Last login: Sun Apr  7 17:32:57 2024 from xxx.xxx.xxx.xx
    ,     #_
    ~\_  ####_        Amazon Linux 2
   ~~  \_#####\
