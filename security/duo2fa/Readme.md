@@ -108,7 +108,7 @@ drwxr-xr-x. 3 root root  37 May  4 13:37 ..
 drwxr-xr-x. 3 root root  17 May  4 13:37 script 
 ```
 ##     7.Edit file pam_duo.conf with data from duo dashboard 
- 
+
 ```bash
 [root@localhost script]# cat script/etc/duo/pam_duo.conf
 
@@ -126,7 +126,11 @@ host = xxxxx.duosecurity.com
 failmode = safe
 ; Send command for Duo Push authentication
 pushinfo = yes
+```
 
+##     8.Running script deploy.sh  as ***root user***
+
+```bash 
 [root@localhost script]# ./deploy.sh
 copy repo
 update pub key
