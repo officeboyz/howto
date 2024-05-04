@@ -83,6 +83,8 @@ $ yum install duo_unix
 
 After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
 
+##    6. Install using script on redhta enterprise 9.3 
+
 Install duo step by step using script make sure using **user root**  : 
 ```bash 
 
@@ -104,6 +106,27 @@ drwxr-xr-x. 3 root root  37 May  4 13:37 .
 drwxr-xr-x. 3 root root  37 May  4 13:37 ..
 -rwxr-xr-x. 1 root root 565 May  4 13:37 deploy.sh
 drwxr-xr-x. 3 root root  17 May  4 13:37 script 
+```
+##     7.Edit file pam_duo.conf with data from duo dashboard 
+ 
+```bash
+[root@localhost script]# cat script/etc/duo/pam_duo.conf
+
+[duo]
+; Duo integration key
+ikey = xxx
+; Duo secret key
+skey = xxxx
+; Duo API host
+host = xxxxx.duosecurity.com
+; `failmode = safe` In the event of errors with this configuration file or connection to the Duo service
+; this mode will allow login without 2FA.
+; `failmode = secure` This mode will deny access in the above cases. Misconfigurations with this setting
+; enabled may result in you being locked out of your system.
+failmode = safe
+; Send command for Duo Push authentication
+pushinfo = yes
+
 [root@localhost script]# ./deploy.sh
 copy repo
 update pub key
