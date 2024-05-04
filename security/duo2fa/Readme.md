@@ -83,7 +83,7 @@ $ yum install duo_unix
 
 After enable duo 2fa with pam duo can't login root and you should have second account to manage access root 
 
-Install duo step by step using script make sure using /b user root /b : 
+Install duo step by step using script make sure using **user root**  : 
 ```bash 
 
 [root@localhost ~]# git clone -b develop https://github.com/officeboyz/howto.git
