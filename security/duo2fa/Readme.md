@@ -272,6 +272,9 @@ session    include      password-auth
 session    include      postlogin
 [root@localhost script]#
 [root@localhost script]# sudo systemctl restart sshd
+```
+##    9. Monitor log secure to make sure duo working ***(host/server must be can access internet )*** since need connect to duo push server api:
+```bash
 [root@localhost script]# tail -f /var/log/secure
 May  4 13:25:44 localhost sudo[1654]: pam_unix(sudo:session): session opened for user root(uid=0) by utopia(uid=0)
 May  4 13:25:44 localhost sudo[1654]: pam_unix(sudo:session): session closed for user root
@@ -289,6 +292,7 @@ May  4 13:44:00 localhost sshd[1949]: Accepted password for utopia from 192.168.
 May  4 13:44:00 localhost sshd[1949]: pam_unix(sshd:session): session opened for user utopia(uid=1000) by (uid=0)
 
 ```
+##     10. example ssh screen when dou not configure with valid data:
 
 ```bash 
 # ssh xxxx@xxx.xxx.xx.xx
