@@ -16,7 +16,8 @@ if [ `id -u` -ne 0 ]
      yum  -y install duo_unix
 
      echo "copy config"
-     /bin/cp -rf script/etc/duo/pam_duo.conf /etc/duo/
+     #/bin/cp -rf script/etc/duo/pam_duo.conf /etc/duo/
+     /bin/cp -rf secret.txt /etc/duo/pam_duo.conf
      /bin/cp -rf script/etc/ssh/ssh_config.d/50-redhat.conf /etc/ssh/ssh_config.d/
      /bin/cp -rf script/etc/pam.d/* /etc/pam.d/
 fi
