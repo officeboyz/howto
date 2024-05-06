@@ -107,10 +107,10 @@ drwxr-xr-x. 3 root root  37 May  4 13:37 ..
 -rwxr-xr-x. 1 root root 565 May  4 13:37 deploy.sh
 drwxr-xr-x. 3 root root  17 May  4 13:37 script 
 ```
-###     7.Edit file script/secret.txt with data from duo dashboard [ IKEY , SKEY , HOST] 
+###     7.Edit file [script/duosecret.txt](script/duosecret.txt) with data from duo dashboard [ IKEY , SKEY , HOST] 
 
 ```bash
-[root@localhost script]# vi secret.txt
+[root@localhost script]# vi duosecret.txt
 
 [duo]
 ; Duo integration key
