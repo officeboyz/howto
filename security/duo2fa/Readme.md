@@ -17,7 +17,7 @@ $ yum install duo_unix
 
 ### 3. edit file /etc/duo/pam_duo.conf
 
-   Update base on data in duo dashboard
+   Update base on data in duo dashboard 
 
 ```bash
    ikey = xxx
@@ -107,10 +107,10 @@ drwxr-xr-x. 3 root root  37 May  4 13:37 ..
 -rwxr-xr-x. 1 root root 565 May  4 13:37 deploy.sh
 drwxr-xr-x. 3 root root  17 May  4 13:37 script 
 ```
-###     7.Edit file pam_duo.conf with data from duo dashboard 
+###     7.Edit file script/secret.txt with data from duo dashboard [ IKEY , SKEY , HOST] 
 
 ```bash
-[root@localhost script]# cat script/etc/duo/pam_duo.conf
+[root@localhost script]# vi secret.txt
 
 [duo]
 ; Duo integration key
