@@ -18,7 +18,7 @@ if [ `id -u` -ne 0 ]
      echo "copy config"
      #/bin/cp -rf script/etc/duo/pam_duo.conf /etc/duo/
      /bin/cp -rf duosecret.txt /etc/duo/pam_duo.conf
-     /bin/cp -Rfv script/etc/ssh/sshd_config.d/50-redhat.conf /etc/ssh/sshd_config.d/
+     /bin/cp -Rfv script/etc/ssh/sshd_config.d/* /etc/ssh/sshd_config.d/
      /bin/cp -rf script/etc/pam.d/* /etc/pam.d/
 fi
 exit
